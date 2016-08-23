@@ -10,11 +10,14 @@ use yii\bootstrap\Html;
 
 class LinkPager extends \yii\widgets\LinkPager
 {
-    public $go = false;
+    public $go = true;
+    public $showTotal = true;
 
     public function renderPageButtons()
     {
+
         $renderedButtons = parent::renderPageButtons();
+        if (!$this->go) return $renderedButtons;
         $page = $this->pagination->getPage() + 1;
         $url = $this->pagination->createUrl($page);
         $pageGo = Html::textInput($this->pagination->pageParam, $page, [
@@ -30,7 +33,8 @@ $('ul.pagination li input').keyup(function(event){
 JSGO;
 
         $this->view->registerJs($jsGo);
-        $renderedButtons = preg_replace('/<\/ul>/', "<li>{$pageGo}</li></ul>", $renderedButtons);
+        $totalCount = $this->showTotal ? "/{$this->pagination->getPageCount()}" : "";
+        $renderedButtons = str_replace('</ul>', "<li>{$pageGo}{$totalCount}</li></ul>", $renderedButtons);
         return $renderedButtons;
     }
 }
