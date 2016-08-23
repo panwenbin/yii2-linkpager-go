@@ -1,0 +1,27 @@
+{
+    "name": "panwenbin/yii2-linkpager-go",
+    "description": "LinkPager with a input field which can go to specified page",
+    "keywords": [
+        "LinkPager",
+        "Yii",
+        "Yii2",
+        "go"
+    ],
+    "type": "yii2-extension",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pan Wenbin",
+            "email": "panwenbin@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "panwenbin\\yii2\\linkpager\\": "src/"
+        }
+    }
+}
